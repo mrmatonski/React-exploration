@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #12002b 0%, #05010f 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Dark overlay glow */
+.body__overlay{
+    position: absolute;
+    inset: 0;
+    background:
+    radial-gradient(circle at top, rgba(0,255,255,0.15), transparent 40%),
+    radial-gradient(circle at bottom, rgba(255,0,255,0.15), transparent 40%);
+    z-index: 1;
+}
+
+/* Content */
+.body__content{
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    animation: float 5s ease-in-out infinite;
+}
+
+.body__title{
+    font-size: 6rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 8px;
+    text-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff,
+        0 0 80px #ff00ff;
+}
+
+.body__title span{
+    color: #ff00ff;
+    text-shadow:
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 40px #ff00ff;
+}
+
+.body__subtitle{
+    margin-top: 20px;
+    font-size: 1.3rem;
+    color: #d7d7ff;
+    text-shadow: 0 0 10px cyan;
+}
+
+.body__buttons{
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn{
+    padding: 14px 32px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.btn-primary{
+    background: linear-gradient(45deg, #00ffff, #0066ff);
+    color: white;
+    box-shadow:
+        0 0 10px cyan,
+        0 0 30px cyan;
+}
+
+.btn-primary:hover{
+    transform: translateY(-5px) scale(1.05);
+    box-shadow:
+        0 0 20px cyan,
+        0 0 50px cyan;
+}
+
+.btn-secondary{
+    background: transparent;
+    border: 2px solid #ff00ff;
+    color: #ff00ff;
+    box-shadow:
+        0 0 10px #ff00ff;
+}
+
+.btn-secondary:hover{
+    background: #ff00ff;
+    color: black;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow:
+        0 0 20px #ff00ff,
+        0 0 50px #ff00ff;
+}
+
+/* Neon lasers */
+.laser{
+    position: absolute;
+    width: 200%;
+    height: 4px;
+    opacity: 0.8;
+    filter: blur(1px);
+    animation: laserMove 8s linear infinite;
+}
+
+.laser-1{
+    top: 20%;
+    left: -50%;
+    background: linear-gradient(to right, transparent, cyan, transparent);
+    transform: rotate(-10deg);
+    box-shadow:
+        0 0 20px cyan,
+        0 0 40px cyan;
+}
+
+.laser-2{
+    top: 50%;
+    left: -50%;
+    background: linear-gradient(to right, transparent, #ff00ff, transparent);
+    transform: rotate(8deg);
+    animation-delay: 2s;
+    box-shadow:
+        0 0 20px #ff00ff,
+        0 0 40px #ff00ff;
+}
+
+.laser-3{
+    top: 75%;
+    left: -50%;
+    background: linear-gradient(to right, transparent, #00ff99, transparent);
+    transform: rotate(-5deg);
+    animation-delay: 4s;
+    box-shadow:
+        0 0 20px #00ff99,
+        0 0 40px #00ff99;
+}
+
+/* Cyber grid */
+.grid{
+    position: absolute;
+    bottom: -20%;
+    width: 200%;
+    height: 50%;
+    background-image:
+        linear-gradient(rgba(0,255,255,0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,255,0.2) 1px, transparent 1px);
+    background-size: 60px 60px;
+    transform: perspective(500px) rotateX(75deg);
+    animation: gridMove 10s linear infinite;
+    z-index: 0;
+}
+
+/* Animations */
+@keyframes laserMove{
+    0%{
+        transform: translateX(-20%) rotate(-10deg);
+    }
+
+    100%{
+        transform: translateX(20%) rotate(-10deg);
+    }
+}
+
+@keyframes gridMove{
+    0%{
+        background-position-y: 0;
+    }
+
+    100%{
+        background-position-y: 60px;
+    }
+}
+
+@keyframes float{
+    0%,100%{
+        transform: translateY(0px);
+    }
+
+    50%{
+        transform: translateY(-15px);
+    }
+}
+
+/* Responsive */
+@media(max-width: 768px){
+    .body__title{
+        font-size: 3rem;
+    }
+
+    .body__subtitle{
+        font-size: 1rem;
+    }
+
+    .body__buttons{
+        flex-direction: column;
+        align-items: center;
+    }
+}
